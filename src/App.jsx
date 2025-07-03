@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./App.css";
 import { About } from "./components/About";
+import { Counter } from "./components/Counter/Counter";
 import { Job } from "./components/Job";
 import { TaskList } from "./components/TaskList";
 import { ThemeSwitch } from "./components/ThemeSwitch/ThemeSwitch";
@@ -19,8 +21,12 @@ const tasks = [
 ];
 
 function App() {
+  const [count, setCount] = useState(0);
+  const incCount = () => setCount((x) => x + 1);
+
   return (
     <>
+      <Counter count={count} onIncrement={incCount} />
       <ThemeSwitch />
       <About />
       <Job
